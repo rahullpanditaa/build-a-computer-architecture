@@ -1,0 +1,13 @@
+At the beginning, only a NAND chip is taken as a primitive. Everything other logic gate/chip is constructed using NAND gates and/or other logic gates.
+
+An OR logic gate/chip implementation.
+
+CHIP Or {
+    IN a, b;
+    OUT out;
+
+    PARTS:
+    Not(in= a, out= Nota);
+    Not(in= b, out= Notb);
+    Nand(a= Nota, b= Notb, out= out);
+}
