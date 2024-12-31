@@ -8,3 +8,7 @@ D=M         // D=RAM[0]
 D=D+M       // D = RAM[0] + RAM[1]
 @R2         // selects M=RAM[2]
 M=D         // M = RAM[0] + RAM[1]
+
+(END)      // label END
+@END       
+0;JMP      // jump to END label unconditionally
