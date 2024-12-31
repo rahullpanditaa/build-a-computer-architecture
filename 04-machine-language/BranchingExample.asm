@@ -5,19 +5,21 @@
 // Computes : if R0 > 0; R1 = 1; else R1 = 0;
 
 @R0          // selects M=RAM[0]
+D=M
 
 @POSITIVE
-M;JGT       // if M=RAM[0] > 0, jump to POSITIVE label
+D;JGT       // if D=M=RAM[0] > 0, jump to POSITIVE label
 
 // else
-@0         // A=0, side effect M=RAM[0]
 @R1        // M=RAM[1]
-M=A        // sets M(RAM[1]) to 0
+M=0        // sets M(RAM[1]) to 0
+@END       // finish else clause; jump to end 
+0;JMP
 
 (POSITIVE)
-@1        // A=1, side effect M=RAM[1]
-M=A       // sets M(RAM[1]) to A(1)
+@R1
+M=1       // sets M(RAM[1]) to 1
 
 (END)
 @END
-0:JMP
+0;JMP
