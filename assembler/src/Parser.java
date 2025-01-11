@@ -3,7 +3,8 @@ public class Parser {
     Parser() {
         // open source text file
     }
-
+}
+    /*
     public boolean hasMoreLines() {
         // check whether the text file opened by this Parser object has a next line
     }
@@ -17,6 +18,7 @@ public class Parser {
     ??? instructionType() {
         // return the type of current instruction as a constant
         // A instruction or C instruction
+        // probably enums
     }
 
     // Not dealing with symbols yet
@@ -33,3 +35,4 @@ public class Parser {
         // returns the C instruction's jump field
     }
 }
+*/
