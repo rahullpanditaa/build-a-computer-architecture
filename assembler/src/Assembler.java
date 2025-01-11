@@ -24,7 +24,13 @@ public class Assembler {
         try {
             BufferedReader reader = new BufferedReader(
                                     new FileReader("output.hack"));
-            System.out.println(reader.readLine());
+
+            // declare a string to hold each line of text as we
+            // read it
+            String line;
+            while((line = reader.readLine()) != null) {
+                System.out.println(line);
+            }
             reader.close();
         } catch (IOException e) {
             throw new RuntimeException(e);
