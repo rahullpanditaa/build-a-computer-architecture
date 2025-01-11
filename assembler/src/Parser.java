@@ -1,8 +1,24 @@
-public class Parser {
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 
-    Parser() {
-        // open source text file
+public class Parser {
+    String inputAsmFileName;
+    BufferedReader reader;
+
+
+    public Parser(String inputAsm) {
+        this.inputAsmFileName = inputAsm;
+
+        try {
+            BufferedReader reader = new BufferedReader(new FileReader(inputAsmFileName));
+        } catch (FileNotFoundException e) {
+            throw new RuntimeException(e);
+        }
     }
+
+
 }
     /*
     public boolean hasMoreLines() {
