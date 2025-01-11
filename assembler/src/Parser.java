@@ -4,15 +4,16 @@ import java.io.FileReader;
 import java.io.IOException;
 
 public class Parser {
-    String inputAsmFileName;
+//    String inputAsmFileName;
     BufferedReader reader;
 
 
+
     public Parser(String inputAsm) {
-        this.inputAsmFileName = inputAsm;
+//        this.inputAsmFileName = inputAsm;
 
         try {
-            BufferedReader reader = new BufferedReader(new FileReader(inputAsmFileName));
+            BufferedReader reader = new BufferedReader(new FileReader(inputAsm));
         } catch (FileNotFoundException e) {
             throw new RuntimeException(e);
         }
@@ -22,21 +23,36 @@ public class Parser {
         // check whether the text file opened by this Parser object has a next line
         try {
             String nextLine = reader.readLine();
-            return (nextLine != null && nextLine.startsWith("//"));
+            return (nextLine != null && nextLine.startsWith("//") &&nextLine.trim().isEmpty());
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
     }
     // if there is a next line or instruction, go to it and make it the current
     // instruction
-    void advance() {
+    String currentInstruction;
+    public void advance() {
         if (hasMoreLines()) {
             try {
-                String currentInstruction = reader.readLine();
+                currentInstruction = reader.readLine();
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
         }
+    }
+
+    // Parsing the current instruction
+    InstructionType currentInstructionType;
+    public InstructionType instructionType() {
+        // return the type of current instruction as a constant
+        // A instruction or C instruction
+        // probably enums
+        if (currentInstruction.startsWith("@")) {
+            currentInstructionType = InstructionType.A_INSTRUCTION;
+        } else {
+            currentInstructionType = InstructionType.C_INSTRUCTION;
+        }
+        return currentInstructionType;
     }
 
 
