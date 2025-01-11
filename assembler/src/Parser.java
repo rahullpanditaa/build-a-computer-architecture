@@ -17,6 +17,17 @@ public class Parser {
             throw new RuntimeException(e);
         }
     }
+    // this method should ignore whitespace and comments
+    public boolean hasMoreLines() {
+        // check whether the text file opened by this Parser object has a next line
+        try {
+            String nextLine = reader.readLine();
+            return (nextLine != null && nextLine.startsWith("//"));
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
 
 
 }
