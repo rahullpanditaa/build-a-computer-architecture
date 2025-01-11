@@ -27,7 +27,17 @@ public class Parser {
             throw new RuntimeException(e);
         }
     }
-
+    // if there is a next line or instruction, go to it and make it the current
+    // instruction
+    void advance() {
+        if (hasMoreLines()) {
+            try {
+                String currentInstruction = reader.readLine();
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        }
+    }
 
 
 }
