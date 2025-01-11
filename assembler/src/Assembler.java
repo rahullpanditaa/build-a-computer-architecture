@@ -1,6 +1,4 @@
-import java.io.BufferedWriter;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
 
 public class Assembler {
 
@@ -19,6 +17,15 @@ public class Assembler {
                 writer.write("\n" + binaryCode);
             }
             writer.close();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
+        try {
+            BufferedReader reader = new BufferedReader(
+                                    new FileReader("output.hack"));
+            System.out.println(reader.readLine());
+            reader.close();
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
